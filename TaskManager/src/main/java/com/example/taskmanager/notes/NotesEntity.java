@@ -1,20 +1,18 @@
-package com.example.taskmanager.tasks;
+package com.example.taskmanager.notes;
 
-import com.example.taskmanager.notes.NotesEntity;
+import com.example.taskmanager.tasks.TaskEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
-import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "tasks")
-public class TaskEntity {
+@Entity(name = "notes")
+public class NotesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
@@ -22,10 +20,6 @@ public class TaskEntity {
 
     private String title;
     private String description;
-    private boolean completed;
-    @Column(unique = true)
-    private Date dueDate;
-
-    @OneToMany(targetEntity = NotesEntity.class, cascade = CascadeType.ALL)
-    private List<NotesEntity> notes;
+    @ManyToOne(targetEntity = TaskEntity.class)
+    private TaskEntity task;
 }

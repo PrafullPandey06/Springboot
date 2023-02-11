@@ -4,23 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.Date;
-
 @DataJpaTest
 public class TaskServiceTests {
-
     @Autowired private TaskRepository taskRepository;
 
     @Test
-    public void testCreateTask() {
+    public void createTask() {
         TaskService taskService = new TaskService(taskRepository);
-
-        TaskEntity task = taskService.createTask(
-                "test task",
-                "test description",
-                new Date()
-        );
-
+        TaskEntity task = taskService.createTask("title", "description", new java.sql.Date(0));
         System.out.println(task);
     }
+
 }

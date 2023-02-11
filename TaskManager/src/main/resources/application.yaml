@@ -9,5 +9,12 @@ spring:
     hibernate:
       ddl-auto: create
 
-#this is configuration file all serverside and other configuration are written here
-#it can be of any extension .properties or .yaml but name of the file should be application only.
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  logging:
+    level:
+      org:
+        hibernate:
+          type: trace
