@@ -44,7 +44,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers(HttpMethod.GET,"/about").permitAll() // this will allow anyone to access the about page
             .antMatchers((HttpMethod.POST),"/users","/users/login").permitAll() // this will allow anyone to create a user
-            .antMatchers("/*/**").authenticated()
+                .antMatchers((HttpMethod.GET),"/test").permitAll()
+                .antMatchers("/*/**").authenticated()
             .and()
             .addFilterBefore(jwtAuthenticationFilter, AnonymousAuthenticationFilter.class) // so our authentication must happen before anonymous authentication is just a fallback
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

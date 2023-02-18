@@ -42,7 +42,7 @@ public class JwtAuthentication implements Authentication {
     @Override
     public UserResponseDto getPrincipal() {
         // This is where we return the user/client who is getting authenticated
-        return null;
+        return user;
     }
 
     @Override
