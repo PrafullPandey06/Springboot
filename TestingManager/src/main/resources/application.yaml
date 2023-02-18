@@ -1,0 +1,13 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
+#this is configuration file all serverside and other configuration are written here
+#it can be of any extension .properties or .yaml but name of the file should be application only.
